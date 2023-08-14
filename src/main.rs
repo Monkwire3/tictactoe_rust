@@ -79,7 +79,7 @@ impl TicTacToe {
             };
             let x: usize = x.try_into().unwrap();
             let y: usize = y.try_into().unwrap();
-            next_state.board[y][x] = PlayerToken::Token(next_state.current_player);
+            next_state.board[y][x] = PlayerToken::Token(self.current_player);
             return next_state;
         }
         self
@@ -136,11 +136,14 @@ fn main() {
             ttt = ttt.get_next_state(x, y);
             println!("x: {}, y: {}", x, y);
         }
-        
-
         println!("Input: {}", input);
-
     }
 
+    println!("{}", ttt);
+    if let Some(winner) = ttt.winner() {
+        println!("{} has won!", winner);
+    } else {
+        println!("It's a draw!");
+    }
 }
     
